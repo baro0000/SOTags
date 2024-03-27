@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOTags", "SOTags\SOTags.csproj", "{88BB117D-2111-46D7-8326-DB9FCE745523}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOTags.DataAccess", "SOTags.DataAccess\SOTags.DataAccess.csproj", "{C91E1B13-D111-4ED4-B537-28723F6D22BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88BB117D-2111-46D7-8326-DB9FCE745523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88BB117D-2111-46D7-8326-DB9FCE745523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88BB117D-2111-46D7-8326-DB9FCE745523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88BB117D-2111-46D7-8326-DB9FCE745523}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C91E1B13-D111-4ED4-B537-28723F6D22BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C91E1B13-D111-4ED4-B537-28723F6D22BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C91E1B13-D111-4ED4-B537-28723F6D22BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C91E1B13-D111-4ED4-B537-28723F6D22BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1D32CF7-CC17-4B0B-B200-29ACCE1ACF51}
+	EndGlobalSection
+EndGlobal
