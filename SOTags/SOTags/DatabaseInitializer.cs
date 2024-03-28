@@ -1,34 +1,38 @@
-﻿using SOTags.DataAccess;
+﻿using SOTags.ApplicationServices.Components;
+using SOTags.ApplicationServices.Components.Connectors.StackOverflow;
+using SOTags.DataAccess;
+using SOTags.DataAccess.Components;
+using SOTags.DataAccess.Entities;
 
 namespace SOTags
 {
-    public static class DatabaseInitializer
+    public class DatabaseInitializer
     {
-        public static async Task Initialize(IServiceProvider services)
+        private readonly IStackOverflowConnector connector;
+        private readonly IInitialDataLoader dataLoader;
+        private readonly IStackOverflowJsonReader jsonReader;
+
+        public DatabaseInitializer(IStackOverflowConnector connector, IInitialDataLoader dataLoader, IStackOverflowJsonReader jsonReader)
+        {
+            this.connector = connector;
+            this.dataLoader = dataLoader;
+            this.jsonReader = jsonReader;
+        }
+        public async Task Initialize(IServiceProvider services)
         {
             using (var scope = services.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetRequiredService<DatabaseDbContext>();
 
+                // Ensure the database is created and apply migrations
                 await dbContext.Database.EnsureCreatedAsync();
 
+                // Check if Tags table is empty
                 if (!dbContext.Tags.Any())
                 {
-                    using (var httpClient = new HttpClient())
-                    {
-                        var apiUrl = "https://api.stackexchange.com/2.3/tags?order=desc&sort=popular&site=stackoverflow";
-                        var response = await httpClient.GetAsync(apiUrl);
-                        if (response.IsSuccessStatusCode)
-                        {
-                            var responseData = await response.Content.ReadAsStringAsync();
-                            // Process response data and save to the database
-                            // You can use libraries like Newtonsoft.Json for JSON deserialization
-                        }
-                        else
-                        {
-                            throw new Exception("Failed to fetch data from Stack Overflow API.");
-                        }
-                    }
+                    await connector.DownloadData();
+                    List<Tag> tagList = jsonReader.ReadFile();
+                    dataLoader.LoadData(tagList, dbContext);
                 }
             }
         }
