@@ -31,8 +31,11 @@ namespace SOTags
                 if (!dbContext.Tags.Any())
                 {
                     await connector.DownloadData();
-                    List<Tag> tagList = jsonReader.ReadFile();
-                    dataLoader.LoadData(tagList, dbContext);
+                    if (connector.Error == null)
+                    {
+                        List<Tag> tagList = jsonReader.ReadFile();
+                        dataLoader.LoadData(tagList, dbContext);
+                    }
                 }
             }
         }

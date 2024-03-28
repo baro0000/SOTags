@@ -10,5 +10,6 @@ namespace SOTags.ApplicationServices.API.Domain.Models
     {
         public string Name { get; set; }
         public int Count { get; set; }
+        public double Percentage { get; set; }
     }
 }

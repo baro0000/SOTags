@@ -23,5 +23,14 @@ namespace SOTags.Controllers
             var response = await mediator.Send(request);
             return Ok(response);
         }
+
+        [HttpPut]
+        [Route("")]
+        public async Task<IActionResult> UpdateDatabase()
+        {
+            var request = new UpdateDatabaseRequest();
+            var response = await mediator.Send(request);
+            return Ok(response);
+        }
     }
 }
