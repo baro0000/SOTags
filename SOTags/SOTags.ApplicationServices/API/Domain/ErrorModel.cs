@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace SOTags.ApplicationServices.API.Domain
 {
-    public class ResponseBase<T> : ErrorResponseBase
+    public class ErrorModel
     {
-        public T Data { get; set; }
+        public string Error { get; }
+        public ErrorModel(string error)
+        {
+            Error = error;
+        }
     }
 }

@@ -1,36 +1,41 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Sieve.Models;
+using Sieve.Services;
 using SOTags.ApplicationServices.API.Domain;
+using SOTags.ApplicationServices.API.Domain.Models;
+using SOTags.ApplicationServices.API.ErrorHandling;
+using System.Net;
 
 namespace SOTags.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TagsController : ControllerBase
+    public class TagsController : ApiControllerBase
     {
-        private readonly IMediator mediator;
+        private readonly ILogger<TagsController> logger;
 
-        public TagsController(IMediator mediator)
+        public TagsController(IMediator mediator, ILogger<TagsController> logger, ISieveProcessor sieveProcessor) : base(mediator, logger, sieveProcessor)
         {
-            this.mediator = mediator;
+            this.logger = logger;
         }
 
         [HttpGet]
         [Route("")]
-        public async Task<IActionResult> GetAllTags()
+        public Task<IActionResult> GetAllTags()
         {
+            logger.LogInformation("Run GetAllTags method");
             var request = new GetTagsRequest();
-            var response = await mediator.Send(request);
-            return Ok(response);
+            return HandleRequest<GetTagsRequest, GetTagsResponse>(request);
         }
 
         [HttpPut]
         [Route("")]
-        public async Task<IActionResult> UpdateDatabase()
+        public Task<IActionResult> UpdateDatabase()
         {
+            logger.LogInformation("Run UpdateDatabase method");
             var request = new UpdateDatabaseRequest();
-            var response = await mediator.Send(request);
-            return Ok(response);
+            return HandleRequest<UpdateDatabaseRequest, UpdateDatabaseResponse>(request);
         }
     }
 }
