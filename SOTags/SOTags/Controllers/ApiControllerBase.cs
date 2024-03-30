@@ -1,13 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Sieve.Models;
-using Sieve.Services;
 using SOTags.ApplicationServices.API.Domain;
-using SOTags.ApplicationServices.API.Domain.Models;
 using SOTags.ApplicationServices.API.ErrorHandling;
-using SOTags.Sieve;
 using System.Net;
 
 namespace SOTags.Controllers
@@ -16,13 +10,11 @@ namespace SOTags.Controllers
     {
         private readonly IMediator mediator;
         private readonly ILogger<ApiControllerBase> logger;
-        private readonly ISieveProcessor sieveProcessor;
 
-        public ApiControllerBase(IMediator mediator, ILogger<ApiControllerBase> logger, ISieveProcessor sieveProcessor)
+        public ApiControllerBase(IMediator mediator, ILogger<ApiControllerBase> logger)
         {
             this.mediator = mediator;
             this.logger = logger;
-            this.sieveProcessor = sieveProcessor;
         }
 
         protected async Task<IActionResult> HandleRequest<TRequest, TResponse>(TRequest request)
@@ -45,13 +37,6 @@ namespace SOTags.Controllers
             }
 
             return Ok(response);
-        }
-
-        protected async Task<IActionResult> ApplySieve<TRequest, TResponse>(TRequest request, SieveModel query)
-            where TRequest : IRequest<TResponse>
-            where TResponse : ErrorResponseBase
-        {
-            throw new NotImplementedException();
         }
 
         private IActionResult ErrorResponse(ErrorModel errorModel)

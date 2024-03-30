@@ -1,5 +1,4 @@
-﻿using SOTags.DataAccess.Entities;
-using System.IO.Compression;
+﻿using System.IO.Compression;
 
 namespace SOTags.ApplicationServices.Components.Connectors.StackOverflow
 {

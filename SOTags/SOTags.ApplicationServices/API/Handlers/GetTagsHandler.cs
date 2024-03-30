@@ -1,17 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
-using Sieve.Services;
 using SOTags.ApplicationServices.API.Domain;
-using SOTags.ApplicationServices.API.ErrorHandling;
 using SOTags.DataAccess.CQRS;
 using SOTags.DataAccess.CQRS.Queries;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SOTags.ApplicationServices.API.Handlers
 {

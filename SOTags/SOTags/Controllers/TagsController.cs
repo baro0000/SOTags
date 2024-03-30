@@ -1,11 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Sieve.Models;
-using Sieve.Services;
 using SOTags.ApplicationServices.API.Domain;
-using SOTags.ApplicationServices.API.Domain.Models;
-using SOTags.ApplicationServices.API.ErrorHandling;
-using System.Net;
 
 namespace SOTags.Controllers
 {
@@ -15,7 +10,7 @@ namespace SOTags.Controllers
     {
         private readonly ILogger<TagsController> logger;
 
-        public TagsController(IMediator mediator, ILogger<TagsController> logger, ISieveProcessor sieveProcessor) : base(mediator, logger, sieveProcessor)
+        public TagsController(IMediator mediator, ILogger<TagsController> logger) : base(mediator, logger)
         {
             this.logger = logger;
         }
@@ -27,6 +22,21 @@ namespace SOTags.Controllers
             logger.LogInformation("Run GetAllTags method");
             var request = new GetTagsRequest();
             return HandleRequest<GetTagsRequest, GetTagsResponse>(request);
+        }
+
+        [HttpGet]
+        [Route("Paged")]
+        public Task<IActionResult> GetAllTags([FromQuery] int page, int pageSize, string? sortByName = null, string? sortByCount = null)
+        {
+            logger.LogInformation("Run GetAllTags method");
+            var request = new GetPagedTagsRequest()
+            {
+                Page = page,
+                PageSize = pageSize,
+                SortByCount = sortByCount != null ? sortByCount.ToUpper() : null,
+                SortByName = sortByName != null ? sortByName.ToUpper() : null
+            };
+            return HandleRequest<GetPagedTagsRequest, GetPagedTagsResponse>(request);
         }
 
         [HttpPut]

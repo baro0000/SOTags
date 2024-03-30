@@ -1,17 +1,10 @@
 ﻿using MediatR;
-using Newtonsoft.Json;
 using SOTags.ApplicationServices.API.Domain;
 using SOTags.ApplicationServices.Components;
 using SOTags.ApplicationServices.Components.Connectors.StackOverflow;
 using SOTags.DataAccess.CQRS;
 using SOTags.DataAccess.CQRS.Commands;
 using SOTags.DataAccess.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace SOTags.ApplicationServices.API.Handlers
 {
