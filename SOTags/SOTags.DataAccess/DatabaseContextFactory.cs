@@ -9,6 +9,7 @@ namespace SOTags.DataAccess
         {
             var optionBuilder = new DbContextOptionsBuilder<DatabaseDbContext>();
             optionBuilder.UseSqlServer("Data Source=DESKTOP-CBK7MCF\\SQLEXPRESS;Initial Catalog=StackOverflowTags;Integrated Security=True;Trust Server Certificate=True");
+            optionBuilder.UseSqlServer("Data Source=DESKTOP-N79UBH8\\SQLEXPRESS;Initial Catalog=StackOverflowTags;Integrated Security=True;Trust Server Certificate=True");
             return new DatabaseDbContext(optionBuilder.Options);
         }
     }

@@ -24,7 +24,7 @@ builder.Services.AddTransient<IQueryExecutor, QueryExecutor>();
 builder.Services.AddTransient<ICommandExecutor, CommandExecutor>();
 builder.Services.AddTransient<IStackOverflowConnector, StackOverflowConnector>();
 builder.Services.AddTransient<IStackOverflowJsonReader, StackOverflowJsonReader>();
-builder.Services.AddDbContext<DatabaseDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseDbContext")));
+builder.Services.AddDbContext<DatabaseDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseDbContextLaptop")));
 builder.Services.AddTransient<DatabaseInitializer>();
 builder.Services.AddTransient<IInitialDataLoader, InitialDataLoader>();
 builder.Services.AddControllers();
