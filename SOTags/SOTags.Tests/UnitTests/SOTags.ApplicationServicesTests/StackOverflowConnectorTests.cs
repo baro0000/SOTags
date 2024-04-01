@@ -16,7 +16,7 @@ namespace SOTags.Tests.UnitTests.SOTags.ApplicationServicesTests
     public class StackOverflowConnectorTests
     {
         [Fact]
-        public async void StackOverflowConnector_DownloadsRequiredTagsAndSaveToJsonFile()
+        public async Task StackOverflowConnector_DownloadsRequiredTagsAndSaveToJsonFile()
         {
             // Arrange
             var connector = new StackOverflowConnector();

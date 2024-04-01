@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SOTags.ApplicationServices.API.Domain;
+using SOTags.ApplicationServices.API.Validators;
 
 namespace SOTags.Controllers
 {
@@ -17,18 +18,24 @@ namespace SOTags.Controllers
 
         [HttpGet]
         [Route("")]
-        public Task<IActionResult> GetAllTags()
+        public async Task<IActionResult> GetAllTags()
         {
             logger.LogInformation("Run GetAllTags method");
             var request = new GetTagsRequest();
-            return HandleRequest<GetTagsRequest, GetTagsResponse>(request);
+            return await HandleRequest<GetTagsRequest, GetTagsResponse>(request);
         }
 
+      
+        /// <param name="page">Integer</param>
+        /// <param name="pageSize">Integer value: 10 / 30 / 50</param>
+        /// <param name="sortByName">ASC or DESC</param>
+        /// <param name="sortByCount">ASC or DESC</param>
         [HttpGet]
         [Route("Paged")]
-        public Task<IActionResult> GetAllTags([FromQuery] int page, int pageSize, string? sortByName = null, string? sortByCount = null)
+        public async Task<IActionResult> GetPagedTags([FromQuery] int page, int pageSize, string? sortByName = null, string? sortByCount = null)
         {
             logger.LogInformation("Run GetAllTags method");
+            
             var request = new GetPagedTagsRequest()
             {
                 Page = page,
@@ -36,16 +43,25 @@ namespace SOTags.Controllers
                 SortByCount = sortByCount != null ? sortByCount.ToUpper() : null,
                 SortByName = sortByName != null ? sortByName.ToUpper() : null
             };
-            return HandleRequest<GetPagedTagsRequest, GetPagedTagsResponse>(request);
+
+            var validator = new GetPagedTagsRequestValidator();
+            var validationResult = await validator.ValidateAsync(request);
+
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
+
+            return await HandleRequest<GetPagedTagsRequest, GetPagedTagsResponse>(request);
         }
 
         [HttpPut]
         [Route("")]
-        public Task<IActionResult> UpdateDatabase()
+        public async Task<IActionResult> UpdateDatabase()
         {
             logger.LogInformation("Run UpdateDatabase method");
             var request = new UpdateDatabaseRequest();
-            return HandleRequest<UpdateDatabaseRequest, UpdateDatabaseResponse>(request);
+            return await HandleRequest<UpdateDatabaseRequest, UpdateDatabaseResponse>(request);
         }
     }
 }

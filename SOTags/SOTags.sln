@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOTags.DataAccess", "SOTags
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOTags.ApplicationServices", "SOTags.ApplicationServices\SOTags.ApplicationServices.csproj", "{950A0013-465C-4DBB-9014-7A50CAEC3B41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOTags.Tests", "SOTags.Tests\SOTags.Tests.csproj", "{3E9293D7-7CBA-481A-8174-E2A5BB159A0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SOTags.UnitTests", "SOTags.Tests\SOTags.UnitTests.csproj", "{3E9293D7-7CBA-481A-8174-E2A5BB159A0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SOTags.IntegrationTests", "SOTags.IntegrationTests\SOTags.IntegrationTests.csproj", "{2EBDADE3-E4D3-4D74-BF69-2CEE4818DECF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{3E9293D7-7CBA-481A-8174-E2A5BB159A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E9293D7-7CBA-481A-8174-E2A5BB159A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E9293D7-7CBA-481A-8174-E2A5BB159A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EBDADE3-E4D3-4D74-BF69-2CEE4818DECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EBDADE3-E4D3-4D74-BF69-2CEE4818DECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EBDADE3-E4D3-4D74-BF69-2CEE4818DECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EBDADE3-E4D3-4D74-BF69-2CEE4818DECF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

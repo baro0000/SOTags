@@ -15,7 +15,7 @@ namespace SOTags.Tests.UnitTests.SOTags.DataAccessTests
     public class CQRSQueryTests : TestsBase
     {
         [Fact]
-        public async void ExecuteGetTagsQuery_ReturnsTagList()
+        public async Task ExecuteGetTagsQuery_ReturnsTagList()
         {
             // Arrange
             var options = new DbContextOptionsBuilder<DatabaseDbContext>()
