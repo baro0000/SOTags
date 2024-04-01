@@ -15,7 +15,7 @@ namespace SOTags.Controllers
         {
             this.logger = logger;
         }
-
+        /// <summary>Get all tags from database</summary>
         [HttpGet]
         [Route("")]
         public async Task<IActionResult> GetAllTags()
@@ -25,7 +25,7 @@ namespace SOTags.Controllers
             return await HandleRequest<GetTagsRequest, GetTagsResponse>(request);
         }
 
-      
+        /// <summary>Get tags in page view</summary>
         /// <param name="page">Integer</param>
         /// <param name="pageSize">Integer value: 10 / 30 / 50</param>
         /// <param name="sortByName">ASC or DESC</param>
@@ -55,6 +55,7 @@ namespace SOTags.Controllers
             return await HandleRequest<GetPagedTagsRequest, GetPagedTagsResponse>(request);
         }
 
+        /// <summary>Update database with data downloaded from Stack Overflow API</summary>
         [HttpPut]
         [Route("")]
         public async Task<IActionResult> UpdateDatabase()

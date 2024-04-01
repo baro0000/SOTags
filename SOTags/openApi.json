@@ -15,6 +15,7 @@
         "tags": [
           "Tags"
         ],
+        "summary": "Get all tags from database",
         "responses": {
           "200": {
             "description": "Success"
@@ -25,6 +26,7 @@
         "tags": [
           "Tags"
         ],
+        "summary": "Update database with data downloaded from Stack Overflow API",
         "responses": {
           "200": {
             "description": "Success"
@@ -37,6 +39,7 @@
         "tags": [
           "Tags"
         ],
+        "summary": "Get tags in page view",
         "parameters": [
           {
             "name": "page",
